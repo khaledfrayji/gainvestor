@@ -66,9 +66,9 @@ export default function Footer() {
               {/* Company info - 4 columns */}
               <div className="lg:col-span-4">
                 <Link href="/" className="mb-6 inline-block">
-                  <div className="relative h-12 w-40">
+                  <div className="relative h-42 w-40">
                     <Image
-                      src="/logo.png"
+                      src="/logo2.png"
                       alt="Gainvestor Logo"
                       fill
                       className="object-contain"
