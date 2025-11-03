@@ -8,8 +8,10 @@ export default function Page() {
   return (
     <>
       <Hero />
+     
       <Howitworks/>
      <Testimonials/>
+     
      <Faq/>
       <Quote/>
     </>

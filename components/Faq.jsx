@@ -1,16 +1,10 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FiPlus, FiMinus, FiSearch, FiHelpCircle } from 'react-icons/fi';
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function FAQ() {
-  const sectionRef = useRef(null);
-  const headingRef = useRef(null);
-  const faqRef = useRef(null);
+  const observerRef = useRef(null);
   const [openIndex, setOpenIndex] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
@@ -99,51 +93,31 @@ export default function FAQ() {
   ];
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Heading animation
-      if (headingRef.current) {
-        const headingElements = headingRef.current.children;
-        if (headingElements.length > 0) {
-          gsap.from(headingElements, {
-            scrollTrigger: {
-              trigger: headingRef.current,
-              start: 'top 85%',
-              toggleActions: 'play none none none',
-              once: true,
-            },
-            y: 40,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.15,
-            ease: 'power2.out',
-            clearProps: 'all',
-          });
-        }
-      }
+    // Fast Intersection Observer for immediate animations
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15, // Trigger earlier for faster perception
+    };
 
-      // FAQ items animation
-      if (faqRef.current) {
-        const faqItems = faqRef.current.querySelectorAll('.faq-item');
-        if (faqItems.length > 0) {
-          gsap.from(faqItems, {
-            scrollTrigger: {
-              trigger: faqRef.current,
-              start: 'top 80%',
-              toggleActions: 'play none none none',
-              once: true,
-            },
-            y: 40,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.08,
-            ease: 'power2.out',
-            clearProps: 'all',
-          });
+    observerRef.current = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observerRef.current?.unobserve(entry.target);
         }
-      }
-    }, sectionRef);
+      });
+    }, options);
 
-    return () => ctx.revert();
+    // Observe all animated elements
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    elements.forEach((el) => observerRef.current?.observe(el));
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
   }, [activeCategory, searchQuery]);
 
   const toggleFAQ = (index) => {
@@ -160,11 +134,11 @@ export default function FAQ() {
   });
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative overflow-hidden bg-gradient-to-b from-white to-gray-50 px-4 py-20 sm:px-6 lg:px-8 lg:py-32"
-    >
+    <>
+    
+     <section className="relative overflow-hidden bg-gradient-to-b from-white to-gray-50 px-4 py-20 sm:px-6 lg:px-8 lg:pt-32">
       {/* Decorative background elements */}
+      
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -left-40 top-40 h-96 w-96 rounded-full bg-[#C6A664]/5 blur-3xl" />
         <div className="absolute -right-40 bottom-40 h-96 w-96 rounded-full bg-blue-500/5 blur-3xl" />
@@ -172,25 +146,25 @@ export default function FAQ() {
 
       <div className="relative z-10 mx-auto max-w-4xl">
         {/* Section heading */}
-        <div ref={headingRef} className="mb-12 text-center lg:mb-16">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#C6A664]/10 px-4 py-2 text-sm font-semibold text-[#C6A664]">
+        <div className="mb-12 text-center lg:mb-16">
+          <div className="animate-on-scroll fade-in-up-fast delay-0 mb-4 inline-flex items-center gap-2 rounded-full bg-[#C6A664]/10 px-4 py-2 text-sm font-semibold text-[#C6A664]">
             <FiHelpCircle className="h-4 w-4" />
             <span>FAQ</span>
           </div>
-          <h2 className="mx-auto mb-6 max-w-3xl text-4xl font-bold leading-tight text-[#0A2342] sm:text-5xl lg:text-6xl">
+          <h2 className="animate-on-scroll fade-in-up-fast delay-1 mx-auto mb-6 max-w-3xl text-4xl font-bold leading-tight text-[#0A2342] sm:text-5xl lg:text-6xl">
             Questions?{' '}
             <span className="bg-gradient-to-r from-[#C6A664] to-[#8B7355] bg-clip-text text-transparent">
               We've got answers
             </span>
           </h2>
-          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl">
+          <p className="animate-on-scroll fade-in-up-fast delay-2 mx-auto max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl">
             Everything you need to know about getting started with real estate
             investing.
           </p>
         </div>
 
         {/* Search bar */}
-        <div className="mb-8">
+        <div className="animate-on-scroll fade-in-up-fast delay-3 mb-8">
           <div className="relative">
             <FiSearch className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
             <input
@@ -204,7 +178,7 @@ export default function FAQ() {
         </div>
 
         {/* Category filters */}
-        <div className="mb-10 flex flex-wrap justify-center gap-3">
+        <div className="animate-on-scroll fade-in-up-fast delay-4 mb-10 flex flex-wrap justify-center gap-3">
           {categories.map((category) => (
             <button
               key={category.id}
@@ -221,12 +195,13 @@ export default function FAQ() {
         </div>
 
         {/* FAQ list */}
-        <div ref={faqRef} className="space-y-4">
+        <div className="space-y-4">
           {filteredFAQs.length > 0 ? (
             filteredFAQs.map((faq, index) => (
               <div
                 key={index}
-                className="faq-item group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md"
+                className="animate-on-scroll fade-in-up-fast group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md"
+                style={{ animationDelay: `${Math.min(index * 30, 300)}ms` }}
               >
                 <button
                   onClick={() => toggleFAQ(index)}
@@ -250,9 +225,9 @@ export default function FAQ() {
                   </div>
                 </button>
 
-                {/* Answer - Animated */}
+                {/* Answer - Faster animation */}
                 <div
-                  className={`grid transition-all duration-300 ease-in-out ${
+                  className={`grid transition-all duration-200 ease-out ${
                     openIndex === index
                       ? 'grid-rows-[1fr] opacity-100'
                       : 'grid-rows-[0fr] opacity-0'
@@ -269,7 +244,7 @@ export default function FAQ() {
               </div>
             ))
           ) : (
-            <div className="rounded-2xl border border-gray-200 bg-white p-12 text-center">
+            <div className="animate-on-scroll fade-in-up-fast rounded-2xl border border-gray-200 bg-white p-12 text-center">
               <FiSearch className="mx-auto mb-4 h-12 w-12 text-gray-300" />
               <h3 className="mb-2 text-xl font-bold text-gray-900">
                 No results found
@@ -282,7 +257,7 @@ export default function FAQ() {
         </div>
 
         {/* Still have questions CTA */}
-        <div className="mt-12 text-center lg:mt-16">
+        <div className="animate-on-scroll fade-in-up-fast mt-12 text-center lg:mt-16">
           <div className="inline-flex flex-col items-center gap-6 rounded-2xl border border-gray-200 bg-white p-8 shadow-lg lg:p-10">
             <div>
               <h3 className="mb-2 text-2xl font-bold text-[#0A2342] lg:text-3xl">
@@ -294,7 +269,7 @@ export default function FAQ() {
             </div>
             <a
               href="#contact"
-              className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-[#C6A664] to-[#D4B876] px-8 py-4 text-base font-semibold text-[#0A2342] shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-[#C6A664] to-[#D4B876] px-8 py-4 text-base font-semibold text-[#0A2342] shadow-lg  hover:shadow-xl"
             >
               <span className="relative z-10">Schedule a Free Consultation</span>
               <div className="absolute inset-0 bg-gradient-to-r from-[#D4B876] to-[#C6A664] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -303,5 +278,7 @@ export default function FAQ() {
         </div>
       </div>
     </section>
+    </>
+   
   );
 }

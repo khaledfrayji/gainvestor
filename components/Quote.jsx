@@ -37,7 +37,7 @@ export default function Quote() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-gradient-to-br from-[#0A2342] via-[#0d2d54] to-[#0A2342] px-4 py-20 sm:px-6 lg:px-8 lg:py-32"
+      className="relative overflow-hidden bg-white px-4 py-10 sm:px-6 lg:px-8 lg:py-32"
     >
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -58,7 +58,7 @@ export default function Quote() {
           </div>
 
           {/* Main quote */}
-          <blockquote className="mb-8 text-3xl font-bold leading-relaxed text-white sm:text-4xl lg:text-5xl">
+          <blockquote className="mb-8 text-3xl font-bold leading-relaxed text-[#0A2342] sm:text-4xl lg:text-5xl">
             Investing shouldn’t feel{" "}
             <span className="bg-gradient-to-r from-[#C6A664] to-[#D4B876] bg-clip-text text-transparent">
               complicated
@@ -74,19 +74,14 @@ export default function Quote() {
           </blockquote>
 
           {/* Supporting text */}
-          <p className="mx-auto max-w-3xl text-lg leading-relaxed text-white/70 sm:text-xl">
+          <p className="mx-auto max-w-3xl text-lg leading-relaxed text-[#0A2342]/70 sm:text-xl">
             Our team works tirelessly behind the scenes to uncover opportunities
             that truly fit you. We guide, support, and simplify every step, so
             you can focus on growing your wealth with confidence and clarity.
             Professional. Transparent. Human.
           </p>
 
-          {/* Decorative line */}
-          <div className="mx-auto mt-12 flex items-center justify-center gap-3">
-            <div className="h-px w-12 bg-[#C6A664]/30" />
-            <div className="h-1.5 w-1.5 rounded-full bg-[#C6A664]" />
-            <div className="h-px w-12 bg-[#C6A664]/30" />
-          </div>
+       
         </div>
       </div>
     </section>

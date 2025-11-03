@@ -4,3 +4,731 @@ html{
 scroll-behavior: smooth;
 }
 h1,h2,h3,h4,h5,h6 { font-family: var(--font-playfair), serif; }
+
+/* ===========================================
+   HERO SECTION ANIMATIONS
+   Professional, fast, GPU-accelerated
+   =========================================== */
+
+/* Floating background elements - Smooth infinite animation */
+@keyframes float1 {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+}
+
+@keyframes float2 {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(20px) translateX(-15px);
+  }
+}
+
+@keyframes float3 {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-15px);
+  }
+}
+
+.floating-element-1 {
+  animation: float1 8s ease-in-out infinite;
+}
+
+.floating-element-2 {
+  animation: float2 10s ease-in-out infinite;
+}
+
+.floating-element-3 {
+  animation: float3 9s ease-in-out infinite;
+}
+
+/* Hero entrance animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hero badge animation */
+.hero-badge {
+  animation: fadeInDown 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+}
+
+/* Hero headline - Sequential word animation */
+.hero-headline {
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+}
+
+.hero-word {
+  display: inline-block;
+  opacity: 0;
+  animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.hero-word:nth-child(1) { animation-delay: 0.5s; }
+.hero-word:nth-child(2) { animation-delay: 0.6s; }
+.hero-word:nth-child(3) { animation-delay: 0.7s; }
+.hero-word:nth-child(4) { animation-delay: 0.8s; }
+.hero-word:nth-child(5) { animation-delay: 0.9s; }
+
+/* Highlighted word - Extra emphasis */
+.hero-word-highlight {
+  animation: fadeInScale 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.7s both;
+}
+
+/* Hero subtext animation */
+.hero-subtext {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 1s both;
+}
+
+/* CTA buttons with stagger */
+.hero-cta-primary {
+  animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1.2s both;
+}
+
+.hero-cta-secondary {
+  animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1.35s both;
+}
+
+/* Trust badges animation */
+.hero-trust-badges {
+  animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1.5s both;
+}
+
+/* Scroll indicator animation */
+@keyframes scrollDot {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.scroll-indicator {
+  animation: fadeIn 0.8s ease-out 1.8s both;
+}
+
+.scroll-dot {
+  animation: scrollDot 1.5s ease-in-out infinite;
+}
+
+/* Performance optimizations */
+.floating-element-1,
+.floating-element-2,
+.floating-element-3,
+.hero-badge,
+.hero-headline,
+.hero-word,
+.hero-word-highlight,
+.hero-subtext,
+.hero-cta-primary,
+.hero-cta-secondary,
+.hero-trust-badges {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Remove will-change after animations complete */
+@keyframes removeWillChange {
+  to {
+    will-change: auto;
+  }
+}
+
+.hero-badge,
+.hero-headline,
+.hero-word,
+.hero-subtext,
+.hero-cta-primary,
+.hero-cta-secondary,
+.hero-trust-badges {
+  animation-name: fadeInUp, removeWillChange;
+  animation-duration: 0.6s, 0.01s;
+  animation-delay: 0s, 2s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1), ease;
+  animation-fill-mode: both;
+}
+
+/* Accessibility - Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .floating-element-1,
+  .floating-element-2,
+  .floating-element-3 {
+    animation: none !important;
+  }
+  
+  .hero-badge,
+  .hero-headline,
+  .hero-word,
+  .hero-word-highlight,
+  .hero-subtext,
+  .hero-cta-primary,
+  .hero-cta-secondary,
+  .hero-trust-badges,
+  .scroll-indicator {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .hero-word {
+    animation-duration: 0.4s;
+  }
+  
+  .hero-word:nth-child(1) { animation-delay: 0.4s; }
+  .hero-word:nth-child(2) { animation-delay: 0.5s; }
+  .hero-word:nth-child(3) { animation-delay: 0.6s; }
+  .hero-word:nth-child(4) { animation-delay: 0.7s; }
+  .hero-word:nth-child(5) { animation-delay: 0.8s; }
+  
+  .hero-cta-primary {
+    animation-delay: 1s;
+  }
+  
+  .hero-cta-secondary {
+    animation-delay: 1.1s;
+  }
+  
+  .hero-trust-badges {
+    animation-delay: 1.2s;
+  }
+}
+
+/* Smooth button hover effects */
+.hero-cta-primary,
+.hero-cta-secondary {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* ===========================================
+   VERTICAL MARQUEE TESTIMONIALS
+   Smooth infinite scrolling animations
+   =========================================== */
+/* Marquee container setup */
+.marquee-column {
+  overflow: hidden;
+  height: 800px;
+  position: relative;
+}
+
+.marquee-content {
+  display: flex;
+  flex-direction: column;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* ===========================================
+   VERTICAL MARQUEE TESTIMONIALS
+   Smooth infinite scrolling animations
+   =========================================== */
+
+/* Marquee container setup */
+.marquee-column {
+  overflow: hidden;
+  height: 800px;
+  position: relative;
+}
+
+.marquee-content {
+  display: flex;
+  flex-direction: column;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Vertical scrolling animations - Different speeds for visual interest */
+
+/* Normal speed - 25s (faster) */
+@keyframes marqueeUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-marquee-up {
+  animation: marqueeUp 25s linear infinite;
+}
+
+/* Slower speed - 30s (faster) */
+@keyframes marqueeUpSlow {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-marquee-up-slow {
+  animation: marqueeUpSlow 30s linear infinite;
+}
+
+/* Faster speed - 20s (faster) */
+@keyframes marqueeUpFast {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-marquee-up-fast {
+  animation: marqueeUpFast 20s linear infinite;
+}
+
+/* Pause on hover */
+.marquee-column:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+/* Mobile optimization - Shorter height */
+@media (max-width: 1024px) {
+  .marquee-column {
+    height: 600px;
+  }
+  
+  .animate-marquee-up {
+    animation-duration: 22s;
+  }
+  
+  .animate-marquee-up-slow {
+    animation-duration: 27s;
+  }
+  
+  .animate-marquee-up-fast {
+    animation-duration: 18s;
+  }
+}
+
+@media (max-width: 640px) {
+  .marquee-column {
+    height: 500px;
+  }
+  
+  .animate-marquee-up {
+    animation-duration: 20s;
+  }
+  
+  .animate-marquee-up-slow {
+    animation-duration: 25s;
+  }
+}
+
+/* Performance optimizations */
+.marquee-content {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Smooth card hover effect */
+.group {
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Accessibility - Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-content {
+    animation: none !important;
+  }
+  
+  .marquee-column {
+    overflow-y: auto;
+    height: auto;
+    max-height: 600px;
+  }
+}
+/* ===========================================
+   FAST OPTIMIZED ANIMATIONS FOR FAQ
+   Lightning-fast performance
+   =========================================== */
+
+/* Fast fade-in-up animation */
+@keyframes fastFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Base animated element - hidden initially */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Fast variant - triggers when in view */
+.animate-on-scroll.fade-in-up-fast {
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Active state - element is visible */
+.animate-on-scroll.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered delays for sequential animations */
+.delay-0 { transition-delay: 0ms !important; }
+.delay-1 { transition-delay: 50ms !important; }
+.delay-2 { transition-delay: 100ms !important; }
+.delay-3 { transition-delay: 150ms !important; }
+.delay-4 { transition-delay: 200ms !important; }
+
+/* Performance optimizations */
+.animate-on-scroll {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Remove will-change after animation for better performance */
+.animate-on-scroll.animate-in {
+  will-change: auto;
+}
+
+/* Faster accordion animation for FAQ answers */
+.grid-rows-\[1fr\] {
+  transition: grid-template-rows 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.grid-rows-\[0fr\] {
+  transition: grid-template-rows 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Accessibility - respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Mobile optimizations - even faster on mobile */
+@media (max-width: 768px) {
+  .animate-on-scroll.fade-in-up-fast {
+    transition-duration: 0.3s;
+  }
+  
+  .delay-1 { transition-delay: 30ms !important; }
+  .delay-2 { transition-delay: 60ms !important; }
+  .delay-3 { transition-delay: 90ms !important; }
+  .delay-4 { transition-delay: 120ms !important; }
+}
+
+/* Smooth icon rotation for FAQ toggle */
+.rotate-180 {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optimized hover states */
+.group:hover .group-hover\:bg-gray-200 {
+  transition: background-color 0.2s ease-out;
+}
+
+/* Button scale animation */
+.hover\:scale-105:hover {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===========================================
+   HOW IT WORKS (3 STEPS) ANIMATIONS
+   Fast, optimized CSS animations
+   =========================================== */
+
+/* Intersection Observer will add this class */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Fast fade-in-up animation */
+.animate-on-scroll.fade-in-up {
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Active state when element is visible */
+.animate-on-scroll.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered delays for sequential animations */
+.delay-0 { transition-delay: 0ms !important; }
+.delay-1 { transition-delay: 100ms !important; }
+.delay-2 { transition-delay: 200ms !important; }
+
+/* Performance optimizations */
+.animate-on-scroll {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Remove will-change after animation completes */
+.animate-on-scroll.animate-in {
+  will-change: auto;
+}
+
+/* Step cards smooth hover effects */
+.group {
+  transition: border-color 0.5s ease,
+              box-shadow 0.5s ease;
+}
+
+/* Icon scale animation on hover */
+.group:hover .transition-transform {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Number color transition */
+.group:hover .transition-colors {
+  transition: color 0.5s ease;
+}
+
+/* Gradient overlay smooth fade */
+.group .opacity-0 {
+  transition: opacity 0.5s ease;
+}
+
+/* Button hover effects */
+.hover\:scale-105:hover {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Accessibility - Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Mobile optimizations - faster animations */
+@media (max-width: 768px) {
+  .animate-on-scroll.fade-in-up {
+    transition-duration: 0.3s;
+  }
+  
+  .delay-1 { transition-delay: 80ms !important; }
+  .delay-2 { transition-delay: 160ms !important; }
+}
+
+/* ===========================================
+   FOOTER ANIMATIONS
+   Professional hover effects and transitions
+   =========================================== */
+
+/* Smooth link hover effects */
+footer a {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Social icon hover animation */
+footer a[aria-label] {
+  transition: background-color 0.3s ease,
+              color 0.3s ease,
+              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Contact info icon hover */
+.group .group-hover\:bg-\[#C6A664\]\/20 {
+  transition: background-color 0.3s ease;
+}
+
+/* Newsletter input focus animation */
+footer input[type="email"] {
+  transition: border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+footer input[type="email"]:focus {
+  box-shadow: 0 0 0 3px rgba(198, 166, 100, 0.1);
+}
+
+/* Subscribe button animation */
+footer button[type="submit"] {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s ease;
+}
+
+footer button[type="submit"]:hover {
+  box-shadow: 0 10px 25px rgba(198, 166, 100, 0.3);
+}
+
+/* Arrow icon slide animation */
+footer button .group-hover\:translate-x-1 {
+  transition: transform 0.3s ease;
+}
+
+/* Logo hover effect */
+footer a > div:has(img) {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+footer a:hover > div:has(img) {
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+
+/* Smooth underline effect for footer links */
+footer a[href^="/"]::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(to right, #C6A664, #D4B876);
+  transition: width 0.3s ease;
+}
+
+footer a[href^="/"]:hover::after {
+  width: 100%;
+}
+
+/* Make footer links relative for underline effect */
+footer a[href^="/"] {
+  position: relative;
+  display: inline-block;
+}
+
+/* Newsletter success state animation */
+@keyframes checkmark {
+  0% {
+    transform: scale(0) rotate(45deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+footer button svg[class*="FiCheckCircle"] {
+  animation: checkmark 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Performance optimizations */
+footer a,
+footer button,
+footer input {
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Accessibility - Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  footer *,
+  footer *::before,
+  footer *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  footer a,
+  footer button {
+    transition-duration: 0.2s;
+  }
+}
+
