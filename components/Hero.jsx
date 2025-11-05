@@ -114,6 +114,18 @@ export default function Hero() {
       ref={heroRef}
       className="relative flex min-h-screen  flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#0A2342] via-[#0d2d54] to-[#0A2342] px-4 py-20 text-center text-white sm:px-6 lg:px-8"
     >
+        {/* Background Image with proper overlay */}
+        <div className="absolute inset-0">
+          <Image
+            src="/hero.png"
+            alt="City skyline at sunset"
+            fill
+            className="object-cover opacity-30"
+            priority
+            quality={90}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A2342]/50 via-[#0A2342]/70 to-[#0A2342]" />
+          </div>
       {/* Animated background gradients */}
       <div className="absolute inset-0 overflow-hidden">
         <div
