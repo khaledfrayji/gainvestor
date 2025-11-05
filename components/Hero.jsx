@@ -112,7 +112,7 @@ export default function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative flex min-h-screen  flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#0A2342] via-[#0d2d54] to-[#0A2342] px-4 py-20 text-center text-white sm:px-6 lg:px-8"
+      className="relative flex min-h-screen mt-4  flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#0A2342] via-[#0d2d54] to-[#0A2342] px-4 py-20 text-center text-white sm:px-6 lg:px-8"
     >
         {/* Background Image with proper overlay */}
         <div className="absolute inset-0">
@@ -215,7 +215,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-linear-to-r from-[#D4B876] to-[#C6A664] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </a>
           <a
-            href="#about"
+            href="/about"
             className="group relative overflow-hidden rounded-xl border-2 border-white/20 bg-white/5 px-8 py-4 text-base font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-white/40 hover:bg-white/10 sm:px-10"
           >
             <span className="relative z-10">Learn How It Works</span>

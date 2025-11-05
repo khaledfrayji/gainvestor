@@ -130,7 +130,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
+        className={`lg:hidden transition-all  duration-300 ease-in-out overflow-hidden ${
           isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
