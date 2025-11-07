@@ -1,5 +1,9 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
+import Image from 'next/image';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
   FiSearch, 
   FiCheckCircle, 
@@ -13,7 +17,291 @@ import {
   FiTarget
 } from 'react-icons/fi';
 
+// Register GSAP plugins
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export default function Services() {
+  const heroRef = useRef(null);
+  const servicesRef = useRef(null);
+  const processRef = useRef(null);
+  const benefitsRef = useRef(null);
+  const ctaRef = useRef(null);
+
+  useEffect(() => {
+    // Set initial states to prevent flash
+    gsap.set('.hero-badge, .hero-title, .hero-subtitle, .hero-cta', { 
+      opacity: 0, 
+      y: 30 
+    });
+    
+    gsap.set('.service-card', { 
+      opacity: 0, 
+      y: 60 
+    });
+    
+    gsap.set('.process-step', { 
+      opacity: 0, 
+      x: -50 
+    });
+    
+    gsap.set('.benefit-item', { 
+      opacity: 0, 
+      y: 40 
+    });
+    
+    gsap.set('.cta-content > *', { 
+      opacity: 0, 
+      y: 30 
+    });
+
+    const ctx = gsap.context(() => {
+      // Hero Section - Sequential entrance
+      const heroTl = gsap.timeline({ 
+        defaults: { 
+          ease: 'power3.out',
+          duration: 0.8 
+        } 
+      });
+      
+      heroTl
+        .to('.hero-badge', {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+        })
+        .to('.hero-title', {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+        }, '-=0.3')
+        .to('.hero-subtitle', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+        }, '-=0.5')
+        .to('.hero-cta', {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+        }, '-=0.4');
+
+      // Parallax effect for hero background
+      gsap.to('.hero-bg', {
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1.5,
+        },
+        yPercent: 20,
+        ease: 'none',
+      });
+
+      // Floating animation for background elements
+      gsap.to('.float-element-1', {
+        y: 30,
+        x: 20,
+        duration: 4,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+      });
+
+      gsap.to('.float-element-2', {
+        y: -40,
+        x: -15,
+        duration: 5,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+      });
+
+      // Section Headers Animation
+      gsap.utils.toArray('.section-badge').forEach((badge) => {
+        gsap.from(badge, {
+          scrollTrigger: {
+            trigger: badge,
+            start: 'top 90%',
+            toggleActions: 'play none none reverse',
+          },
+          opacity: 0,
+          scale: 0.8,
+          duration: 0.5,
+          ease: 'back.out(1.7)',
+        });
+      });
+
+      gsap.utils.toArray('.section-title').forEach((title) => {
+        gsap.from(title, {
+          scrollTrigger: {
+            trigger: title,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+          opacity: 0,
+          y: 30,
+          duration: 0.8,
+          ease: 'power3.out',
+        });
+      });
+
+      gsap.utils.toArray('.section-description').forEach((desc) => {
+        gsap.from(desc, {
+          scrollTrigger: {
+            trigger: desc,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+          opacity: 0,
+          y: 20,
+          duration: 0.6,
+          ease: 'power2.out',
+        });
+      });
+
+      // Services Cards with Stagger and Scroll
+      ScrollTrigger.batch('.service-card', {
+        onEnter: (elements) => {
+          gsap.to(elements, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: 'power3.out',
+            overwrite: true,
+          });
+        },
+        start: 'top 85%',
+        once: false,
+      });
+
+      // Hover effect for service cards
+      gsap.utils.toArray('.service-card').forEach((card) => {
+        const icon = card.querySelector('.service-icon');
+        const bg = card.querySelector('.service-bg');
+        
+        card.addEventListener('mouseenter', () => {
+          gsap.to(icon, {
+            scale: 1.15,
+            rotation: 5,
+            duration: 0.4,
+            ease: 'back.out(2)',
+          });
+          gsap.to(bg, {
+            opacity: 1,
+            duration: 0.3,
+          });
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          gsap.to(icon, {
+            scale: 1,
+            rotation: 0,
+            duration: 0.4,
+            ease: 'back.out(2)',
+          });
+          gsap.to(bg, {
+            opacity: 0,
+            duration: 0.3,
+          });
+        });
+      });
+
+      // Process Steps with Scroll Progress
+      ScrollTrigger.batch('.process-step', {
+        onEnter: (elements) => {
+          gsap.to(elements, {
+            opacity: 1,
+            x: 0,
+            duration: 0.7,
+            stagger: 0.12,
+            ease: 'power2.out',
+            overwrite: true,
+          });
+        },
+        start: 'top 80%',
+        once: false,
+      });
+
+      // Animate process numbers separately
+      gsap.utils.toArray('.process-number').forEach((number, index) => {
+        gsap.from(number, {
+          scrollTrigger: {
+            trigger: number,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+          scale: 0,
+          rotation: -180,
+          duration: 0.7,
+          delay: index * 0.1,
+          ease: 'back.out(1.7)',
+        });
+      });
+
+      // Benefits Grid with Wave Effect
+      ScrollTrigger.batch('.benefit-item', {
+        onEnter: (elements) => {
+          gsap.to(elements, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: {
+              amount: 0.6,
+              from: 'start',
+              grid: 'auto',
+            },
+            ease: 'power2.out',
+            overwrite: true,
+          });
+        },
+        start: 'top 80%',
+        once: false,
+      });
+
+      // CTA Section with Sequential Animation
+      const ctaTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ctaRef.current,
+          start: 'top 75%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      ctaTl
+        .to('.cta-content > *', {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: 'power3.out',
+        });
+
+      // Smooth scroll progress indicators
+      gsap.utils.toArray('.process-step').forEach((step, i) => {
+        gsap.from(step.querySelector('.step-line'), {
+          scrollTrigger: {
+            trigger: step,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+          scaleY: 0,
+          duration: 0.8,
+          ease: 'power2.inOut',
+          delay: i * 0.1,
+        });
+      });
+
+    }, heroRef);
+
+    return () => {
+      ctx.revert();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
 
   const services = [
     {
@@ -153,106 +441,36 @@ export default function Services() {
   ];
 
   return (
-    <div className="scroll-smooth overflow-hidden bg-white">
+    <div ref={heroRef} className="scroll-smooth overflow-hidden bg-white">
       <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-
-        .animate-fade-in-up {
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .animate-fade-in {
-          animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        .hero-badge {
-          animation: fadeInUp 0.8s ease-out 0.2s backwards;
-        }
-
-        .hero-title {
-          animation: fadeInUp 1s ease-out 0.4s backwards;
-        }
-
-        .hero-subtitle {
-          animation: fadeInUp 0.8s ease-out 0.6s backwards;
-        }
-
-        .hero-cta {
-          animation: fadeInUp 0.8s ease-out 0.8s backwards;
-        }
-
-        .service-card {
-          opacity: 0;
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .service-card:nth-child(1) { animation-delay: 0.1s; }
-        .service-card:nth-child(2) { animation-delay: 0.2s; }
-        .service-card:nth-child(3) { animation-delay: 0.3s; }
-        .service-card:nth-child(4) { animation-delay: 0.4s; }
-        .service-card:nth-child(5) { animation-delay: 0.5s; }
-        .service-card:nth-child(6) { animation-delay: 0.6s; }
-
-        .process-step {
-          opacity: 0;
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .process-step:nth-child(1) { animation-delay: 0.1s; }
-        .process-step:nth-child(2) { animation-delay: 0.2s; }
-        .process-step:nth-child(3) { animation-delay: 0.3s; }
-        .process-step:nth-child(4) { animation-delay: 0.4s; }
-        .process-step:nth-child(5) { animation-delay: 0.5s; }
-        .process-step:nth-child(6) { animation-delay: 0.6s; }
-
-        .benefit-item {
-          opacity: 0;
-          animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        .benefit-item:nth-child(1) { animation-delay: 0.05s; }
-        .benefit-item:nth-child(2) { animation-delay: 0.1s; }
-        .benefit-item:nth-child(3) { animation-delay: 0.15s; }
-        .benefit-item:nth-child(4) { animation-delay: 0.2s; }
-        .benefit-item:nth-child(5) { animation-delay: 0.25s; }
-        .benefit-item:nth-child(6) { animation-delay: 0.3s; }
-        .benefit-item:nth-child(7) { animation-delay: 0.35s; }
-        .benefit-item:nth-child(8) { animation-delay: 0.4s; }
-
         @media (prefers-reduced-motion: reduce) {
-          *,
-          *::before,
-          *::after {
+          * {
             animation-duration: 0.01ms !important;
             animation-iteration-count: 1 !important;
             transition-duration: 0.01ms !important;
           }
         }
       `}</style>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#0A2342] via-[#0d2d54] to-[#0A2342] px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+        {/* Background Image with proper overlay */}
+        <div className="hero-bg min-h-screen absolute inset-0">
+          <Image
+            src="/services.png"
+            alt="City skyline at sunset"
+            fill
+            className="object-cover opacity-30"
+            priority
+            quality={90}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A2342]/50 via-[#0A2342]/70 to-[#0A2342]" />
+        </div>
+
         {/* Background elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-[#C6A664]/10 blur-3xl" />
-          <div className="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-blue-500/5 blur-3xl" />
+          <div className="float-element-1 absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-[#C6A664]/10 blur-3xl" />
+          <div className="float-element-2 absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-blue-500/5 blur-3xl" />
         </div>
 
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
@@ -272,7 +490,7 @@ export default function Services() {
           </h1>
 
           <p className="hero-subtitle mx-auto mb-12 max-w-3xl text-xl leading-relaxed text-white/80 sm:text-2xl">
-            From property search to settlement and beyond—we handle every aspect of your investment property acquisition with professional expertise.
+            From property search to settlement and beyond, we handle every aspect of your investment property acquisition with professional expertise.
           </p>
 
           <a
@@ -285,20 +503,20 @@ export default function Services() {
       </section>
 
       {/* Services Grid */}
-      <section id="services" className="px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+      <section id="services" ref={servicesRef} className="px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#C6A664]/10 px-4 py-2 text-sm font-semibold text-[#C6A664]">
+            <div className="section-badge mb-4 inline-flex items-center gap-2 rounded-full bg-[#C6A664]/10 px-4 py-2 text-sm font-semibold text-[#C6A664]">
               <FiHome className="h-4 w-4" />
               <span>What We Do</span>
             </div>
-            <h2 className="mx-auto mb-6 max-w-3xl text-4xl font-bold leading-tight text-[#0A2342] sm:text-5xl">
+            <h2 className="section-title mx-auto mb-6 max-w-3xl text-4xl font-bold leading-tight text-[#0A2342] sm:text-5xl">
               Full-service buyer{' '}
               <span className="bg-gradient-to-r from-[#C6A664] to-[#D4B876] bg-clip-text text-transparent">
                 representation
               </span>
             </h2>
-            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-600">
+            <p className="section-description mx-auto max-w-2xl text-lg leading-relaxed text-gray-600">
               Everything you need to find, analyze, negotiate, and acquire high-return investment properties.
             </p>
           </div>
@@ -310,11 +528,12 @@ export default function Services() {
                 <div
                   key={index}
                   className="service-card group relative overflow-hidden rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:border-[#C6A664]/30 hover:shadow-xl"
+                  style={{ willChange: 'transform, opacity' }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#C6A664]/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="service-bg absolute inset-0 bg-gradient-to-br from-[#C6A664]/5 to-transparent opacity-0" />
                   
                   <div className="relative z-10">
-                    <div className="mb-6 inline-flex rounded-2xl bg-[#C6A664]/10 p-4 transition-all duration-300 group-hover:bg-[#C6A664]/20">
+                    <div className="service-icon mb-6 inline-flex rounded-2xl bg-[#C6A664]/10 p-4 transition-all duration-300 group-hover:bg-[#C6A664]/20">
                       <Icon className="h-8 w-8 text-[#C6A664]" />
                     </div>
 
@@ -343,20 +562,20 @@ export default function Services() {
       </section>
 
       {/* Process Section */}
-      <section className="bg-gray-50 px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+      <section ref={processRef} className="bg-gray-50 px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
         <div className="mx-auto max-w-5xl">
           <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#C6A664]/10 px-4 py-2 text-sm font-semibold text-[#C6A664]">
+            <div className="section-badge mb-4 inline-flex items-center gap-2 rounded-full bg-[#C6A664]/10 px-4 py-2 text-sm font-semibold text-[#C6A664]">
               <FiTarget className="h-4 w-4" />
               <span>Our Process</span>
             </div>
-            <h2 className="mb-6 text-4xl font-bold leading-tight text-[#0A2342] sm:text-5xl">
+            <h2 className="section-title mb-6 text-4xl font-bold leading-tight text-[#0A2342] sm:text-5xl">
               How we work{' '}
               <span className="bg-gradient-to-r from-[#C6A664] to-[#D4B876] bg-clip-text text-transparent">
                 with you
               </span>
             </h2>
-            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-600">
+            <p className="section-description mx-auto max-w-2xl text-lg leading-relaxed text-gray-600">
               A proven, step-by-step approach to finding and securing your investment property.
             </p>
           </div>
@@ -366,12 +585,16 @@ export default function Services() {
               <div
                 key={index}
                 className="process-step group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 transition-all duration-300 hover:border-[#C6A664]/30 hover:shadow-lg"
+                style={{ willChange: 'transform, opacity' }}
               >
+                {/* Progress line */}
+                <div className="step-line absolute -left-1 top-0 h-full w-1 origin-top bg-gradient-to-b from-[#C6A664] to-[#D4B876]" />
+                
                 <div className="absolute inset-0 bg-gradient-to-r from-[#C6A664]/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 
                 <div className="relative z-10 flex gap-6">
                   <div className="flex-shrink-0">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#C6A664] to-[#D4B876] text-xl font-bold text-white shadow-lg">
+                    <div className="process-number flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#C6A664] to-[#D4B876] text-xl font-bold text-white shadow-lg">
                       {step.number}
                     </div>
                   </div>
@@ -391,20 +614,20 @@ export default function Services() {
       </section>
 
       {/* Benefits Section */}
-      <section className="px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+      <section ref={benefitsRef} className="px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#C6A664]/10 px-4 py-2 text-sm font-semibold text-[#C6A664]">
+            <div className="section-badge mb-4 inline-flex items-center gap-2 rounded-full bg-[#C6A664]/10 px-4 py-2 text-sm font-semibold text-[#C6A664]">
               <FiShield className="h-4 w-4" />
               <span>Why Choose Us</span>
             </div>
-            <h2 className="mb-6 text-4xl font-bold leading-tight text-[#0A2342] sm:text-5xl">
+            <h2 className="section-title mb-6 text-4xl font-bold leading-tight text-[#0A2342] sm:text-5xl">
               The buyer's agent{' '}
               <span className="bg-gradient-to-r from-[#C6A664] to-[#D4B876] bg-clip-text text-transparent">
                 advantage
               </span>
             </h2>
-            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-600">
+            <p className="section-description mx-auto max-w-2xl text-lg leading-relaxed text-gray-600">
               Working with accredited buyer's agents gives you significant advantages over going it alone.
             </p>
           </div>
@@ -416,6 +639,7 @@ export default function Services() {
                 <div
                   key={index}
                   className="benefit-item flex items-start gap-3 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-[#C6A664]/30 hover:shadow-md"
+                  style={{ willChange: 'transform, opacity' }}
                 >
                   <Icon className="mt-1 h-6 w-6 flex-shrink-0 text-[#C6A664]" />
                   <p className="text-base font-medium text-gray-700">
@@ -428,37 +652,7 @@ export default function Services() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-gradient-to-br from-[#0A2342] via-[#0d2d54] to-[#0A2342] px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
-        <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#C6A664]/20 bg-[#C6A664]/10 px-4 py-2 text-sm font-semibold text-[#C6A664] backdrop-blur-sm">
-            <FiUsers className="h-4 w-4" />
-            <span>Get Started</span>
-          </div>
-
-          <h2 className="mb-6 text-4xl font-bold leading-tight text-white sm:text-5xl">
-            Ready to find your next{' '}
-            <span className="bg-gradient-to-r from-[#C6A664] to-[#D4B876] bg-clip-text text-transparent">
-              investment property?
-            </span>
-          </h2>
-
-          <p className="mb-10 text-xl leading-relaxed text-white/80">
-            Schedule a free consultation to discuss your investment goals and how our buyer's agent services can help you succeed.
-          </p>
-
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#C6A664] to-[#D4B876] px-10 py-5 text-lg font-semibold text-[#0A2342] shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
-          >
-            <span>Book Free Consultation</span>
-          </a>
-
-          <p className="mt-8 text-sm text-white/60">
-            No obligations • Expert advice • Accredited professionals
-          </p>
-        </div>
-      </section>
+    
     </div>
   );
 }

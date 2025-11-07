@@ -258,17 +258,17 @@ export default function FAQ() {
 
         {/* Still have questions CTA */}
         <div className="animate-on-scroll fade-in-up-fast mt-12 text-center lg:mt-16">
-          <div className="inline-flex flex-col items-center gap-6 rounded-2xl border border-gray-200 bg-white p-8 shadow-lg lg:p-10">
+          <div className="inline-flex flex-col items-center gap-6 rounded-2xl border border-gray-200 bg-[#0A2342] p-8 shadow-lg lg:p-10">
             <div>
-              <h3 className="mb-2 text-2xl font-bold text-[#0A2342] lg:text-3xl">
+              <h3 className="mb-2 text-2xl font-bold text-[#f2f2f2] lg:text-3xl">
                 Still have questions?
               </h3>
-              <p className="text-base text-gray-600 lg:text-lg">
+              <p className="text-base text-gray-200 lg:text-lg">
                 Let's chat. Our team is here to help you get started.
               </p>
             </div>
             <a
-              href="#contact"
+              href="https://calendly.com/ozgainvestor/welcome-call"
               className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-[#C6A664] to-[#D4B876] px-8 py-4 text-base font-semibold text-[#0A2342] shadow-lg  hover:shadow-xl"
             >
               <span className="relative z-10">Schedule a Free Consultation</span>

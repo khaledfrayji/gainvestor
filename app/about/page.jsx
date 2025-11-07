@@ -189,7 +189,7 @@ export default function About() {
   ];
 
   return (
-    <div ref={sectionRef} className="overflow-hidden bg-white">
+    <div ref={sectionRef} className="overflow-hidden mt-4 bg-white">
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#0A2342] via-[#0d2d54] to-[#0A2342]">
         {/* Background Image with proper overlay */}
@@ -240,7 +240,7 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-r from-[#D4B876] to-[#C6A664] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </a>
               <a
-                href="#contact"
+                href="/contact"
                 className="hero-cta rounded-xl border-2 border-white/20 bg-white/5 px-8 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/10"
               >
                 Get in Touch
@@ -440,7 +440,7 @@ export default function About() {
           </p>
 
           <a
-            href="#contact"
+            href="https://calendly.com/ozgainvestor/welcome-call"
             className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#C6A664] to-[#D4B876] px-10 py-5 text-lg font-semibold text-[#0A2342] shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
           >
             <span>Schedule a Consultation</span>

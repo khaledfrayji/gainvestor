@@ -208,7 +208,7 @@ export default function Hero() {
         {/* CTA buttons */}
         <div ref={ctaRef} className="relative z-210 mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row md:mt-12">
           <a
-            href="#contact"
+            href="https://calendly.com/ozgainvestor/welcome-call"
             className="group relative overflow-hidden rounded-xl bg-linear-to-r from-[#C6A664] to-[#D4B876] px-8 py-4 text-base font-semibold text-[#0A2342] shadow-lg shadow-[#C6A664]/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#C6A664]/30 sm:px-10"
           >
             <span className="relative z-10">Book a Free Consultation</span>

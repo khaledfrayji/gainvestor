@@ -166,7 +166,7 @@ export default function HowItWorksSimple() {
           <div className="inline-flex flex-col items-center gap-4 ">
             <p className="text-lg text-white/70">Ready to get started?</p>
             <a
-              href="/contact"
+              href="https://calendly.com/ozgainvestor/welcome-call"
               className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-[#C6A664] to-[#D4B876] px-8 py-4 text-base font-semibold text-[#0A2342] shadow-lg shadow-[#C6A664]/20  hover:shadow-xl hover:shadow-[#C6A664]/30"
             >
               <span className="relative z-10">Schedule Your Consultation</span>
