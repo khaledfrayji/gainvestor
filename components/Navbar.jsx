@@ -18,7 +18,6 @@ export default function Navbar() {
     { name: "Contact", href: "/contact" },
   ];
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -27,7 +26,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
@@ -39,10 +37,10 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-lg"
-          : "bg-white shadow-md"
+          ? "bg-[#0A2342]/95 backdrop-blur-lg shadow-xl border-b border-[#C6A664]/10"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,10 +49,11 @@ export default function Navbar() {
           <div className="flex items-center space-x-8">
             <Link href="/" className="flex items-center space-x-2 group">
               <Image
-                src={"/logo.png"}
+                src={"/logo2.png"}
                 alt="GainVestor.png"
                 width={90}
                 height={90}
+                className="transition-transform duration-300 group-hover:scale-105"
               />
             </Link>
           </div>
@@ -67,8 +66,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${
                   isActive(link.href)
-                    ? "text-white bg-[#C6A664]"
-                    : "text-gray-700 hover:text-white hover:bg-[#C6A664]"
+                    ? "text-[#0A2342] bg-[#C6A664]"
+                    : "text-white hover:text-[#0A2342] hover:bg-[#C6A664]"
                 }`}
               >
                 {link.name}
@@ -81,7 +80,7 @@ export default function Navbar() {
             {/* CTA Button */}
             <Link
               href="/contact"
-              className="hidden md:inline-flex items-center px-6 py-2.5 rounded-lg bg-[#C6A664] text-white font-semibold hover:bg-[#A88A50] transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
+              className="hidden md:inline-flex items-center px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#C6A664] to-[#D4B876] text-[#0A2342] font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Get Started
             </Link>
@@ -89,7 +88,7 @@ export default function Navbar() {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-700 hover:text-[#C6A664] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#C6A664] transition-all duration-300"
+              className="lg:hidden inline-flex items-center justify-center p-2 rounded-lg text-white hover:text-[#C6A664] hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#C6A664] transition-all duration-300"
             >
               <span className="sr-only">Open main menu</span>
               {!isOpen ? (
@@ -130,19 +129,19 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`lg:hidden transition-all  duration-300 ease-in-out overflow-hidden ${
+        className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
           isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="px-4 pt-2 pb-6 space-y-1 bg-white border-t border-gray-100">
+        <div className="px-4 pt-2 pb-6 space-y-1 bg-[#0A2342]/98 backdrop-blur-lg border-t border-[#C6A664]/20">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
               className={`block px-4 py-3 rounded-lg text-base font-semibold transition-all duration-300 ${
                 isActive(link.href)
-                  ? "text-white bg-[#C6A664]"
-                  : "text-gray-700 hover:bg-gray-100"
+                  ? "text-[#0A2342] bg-[#C6A664]"
+                  : "text-white hover:bg-white/10"
               }`}
             >
               {link.name}
@@ -152,7 +151,7 @@ export default function Navbar() {
           {/* Mobile CTA */}
           <Link
             href="/contact"
-            className="block w-full text-center mt-4 px-6 py-3 rounded-lg bg-[#C6A664] text-white font-semibold hover:bg-[#A88A50] transition-all duration-300"
+            className="block w-full text-center mt-4 px-6 py-3 rounded-lg bg-gradient-to-r from-[#C6A664] to-[#D4B876] text-[#0A2342] font-semibold hover:scale-[1.02] transition-all duration-300 shadow-lg"
           >
             Get Started
           </Link>
@@ -162,7 +161,7 @@ export default function Navbar() {
       {/* Mobile menu overlay */}
       {isOpen && (
         <div
-          className="lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm -z-10"
+          className="lg:hidden fixed inset-0 bg-black/40 backdrop-blur-sm -z-10"
           onClick={() => setIsOpen(false)}
         />
       )}

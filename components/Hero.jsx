@@ -112,20 +112,9 @@ export default function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative flex min-h-screen mt-4  flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#0A2342] via-[#0d2d54] to-[#0A2342] px-4 py-20 text-center text-white sm:px-6 lg:px-8"
+      className="relative flex min-h-screen   flex-col items-center justify-center overflow-hidden bg-[#0A2342] px-4 py-20 text-center text-white sm:px-6 lg:px-8"
     >
-        {/* Background Image with proper overlay */}
-        <div className="absolute inset-0">
-          <Image
-            src="/hero.png"
-            alt="City skyline at sunset"
-            fill
-            className="object-cover opacity-30"
-            priority
-            quality={90}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A2342]/50 via-[#0A2342]/70 to-[#0A2342]" />
-          </div>
+      
       {/* Animated background gradients */}
       <div className="absolute inset-0 overflow-hidden">
         <div
@@ -152,26 +141,7 @@ export default function Hero() {
           ref={statsRef}
           className="mb-8 flex flex-col items-center gap-6 sm:flex-row sm:justify-center"
         >
-          {/* Social proof badge */}
-          <div className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10">
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="relative h-8 w-8 overflow-hidden rounded-full border-2 border-[#0A2342] bg-gradient-to-br from-[#C6A664] to-[#8B7355]"
-                >
-                  <div className="flex h-full w-full items-center justify-center text-xs font-semibold text-white">
-                    {String.fromCharCode(65 + i)}
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="flex items-center gap-1.5 text-sm font-medium text-white/90">
-              <FiCheckCircle className="h-4 w-4 text-[#C6A664]" />
-              <span>1000+ Successful Investors</span>
-            </div>
-          </div>
-
+       
        
         </div>
 
@@ -222,23 +192,7 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Additional trust elements */}
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-white/60 md:mt-16">
-          <div className="flex items-center gap-2">
-            <FiCheckCircle className="h-4 w-4 text-[#C6A664]" />
-            <span>No hidden fees</span>
-          </div>
-          <div className="h-4 w-px bg-white/20" />
-          <div className="flex items-center gap-2">
-            <FiCheckCircle className="h-4 w-4 text-[#C6A664]" />
-            <span>Expert guidance</span>
-          </div>
-          <div className="h-4 w-px bg-white/20" />
-          <div className="flex items-center gap-2">
-            <FiCheckCircle className="h-4 w-4 text-[#C6A664]" />
-            <span>Proven track record</span>
-          </div>
-        </div>
+     
       </div>
     </section>
   );
