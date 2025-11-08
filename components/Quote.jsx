@@ -48,6 +48,15 @@ export default function Quote() {
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
 
+      {/* Big quote icon behind text */}
+      <svg
+        className="absolute left-8 top-1/2 -translate-y-1/2 h-[350px] w-[350px] text-[#C6A664]/10 -z-0"
+        fill="currentColor"
+        viewBox="0 0 32 32"
+      >
+        <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8c0-1.1.9-2 2-2h2V8h-2zm12 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-1.1.9-2 2-2h2V8h-2z" />
+      </svg>
+
       <div className="relative z-10 mx-auto max-w-5xl text-center">
         <div ref={quoteRef}>
           {/* Icon */}
@@ -58,7 +67,7 @@ export default function Quote() {
           </div>
 
           {/* Main quote */}
-          <blockquote className="mb-8 text-3xl font-bold leading-relaxed text-[#0A2342] sm:text-4xl lg:text-5xl">
+          <blockquote className="mb-8 text-3xl italic font-bold leading-relaxed text-[#0A2342] sm:text-4xl lg:text-5xl">
             Investing shouldn’t feel{" "}
             <span className="bg-gradient-to-r from-[#C6A664] to-[#D4B876] bg-clip-text text-transparent">
               complicated
@@ -80,8 +89,6 @@ export default function Quote() {
             you can focus on growing your wealth with confidence and clarity.
             Professional. Transparent. Human.
           </p>
-
-       
         </div>
       </div>
     </section>

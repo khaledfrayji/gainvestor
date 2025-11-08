@@ -189,7 +189,7 @@ export default function About() {
   ];
 
   return (
-    <div ref={sectionRef} className="overflow-hidden mt-4 bg-white">
+    <div ref={sectionRef} className="overflow-hidden  bg-white">
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#0A2342] via-[#0d2d54] to-[#0A2342]">
         {/* Background Image with proper overlay */}

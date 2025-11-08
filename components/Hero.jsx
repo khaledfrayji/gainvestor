@@ -115,21 +115,7 @@ export default function Hero() {
       className="relative flex min-h-screen   flex-col items-center justify-center overflow-hidden bg-[#0A2342] px-4 py-20 text-center text-white sm:px-6 lg:px-8"
     >
       
-      {/* Animated background gradients */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div
-          ref={(el) => (floatingElementsRef.current[0] = el)}
-          className="absolute -left-20 top-20 h-72 w-72 rounded-full bg-[#C6A664]/10 blur-3xl"
-        />
-        <div
-          ref={(el) => (floatingElementsRef.current[1] = el)}
-          className="absolute -right-20 top-40 h-96 w-96 rounded-full bg-blue-500/5 blur-3xl"
-        />
-        <div
-          ref={(el) => (floatingElementsRef.current[2] = el)}
-          className="absolute bottom-20 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-[#C6A664]/5 blur-3xl"
-        />
-      </div>
+    
 
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
