@@ -114,7 +114,19 @@ export default function Hero() {
       ref={heroRef}
       className="relative flex min-h-screen   flex-col items-center justify-center overflow-hidden bg-[#0A2342] px-4 py-20 text-center text-white sm:px-6 lg:px-8"
     >
-      
+      {/* Background Video with overlay */}
+<div className="absolute inset-0 overflow-hidden">
+  <video
+    src="/video.mp4"
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="absolute inset-0 h-full w-full object-cover opacity-10"
+  />
+  <div className="absolute inset-0 bg-gradient-to-b from-[#0A2342]/50 via-[#0A2342]/70 to-[#0A2342]" />
+</div>
+
     
 
       {/* Grid pattern overlay */}

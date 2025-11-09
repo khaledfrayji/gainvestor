@@ -562,7 +562,7 @@ export default function Services() {
       </section>
 
       {/* Process Section */}
-      <section ref={processRef} className="bg-gray-50 px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+      <section ref={processRef} className="bg-white px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
         <div className="mx-auto max-w-5xl">
           <div className="mb-16 text-center">
             <div className="section-badge mb-4 inline-flex items-center gap-2 rounded-full bg-[#C6A664]/10 px-4 py-2 text-sm font-semibold text-[#C6A664]">

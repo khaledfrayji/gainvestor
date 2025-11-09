@@ -123,10 +123,7 @@ export default function Marquee({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Fades on sides */}
-      <div className={`pointer-events-none absolute left-0 top-0 z-10 h-full w-32 bg-gradient-to-r ${currentVariant.fadeFrom} to-transparent`} />
-      <div className={`pointer-events-none absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l ${currentVariant.fadeTo} to-transparent`} />
-
+     
       <div ref={marqueeRef} className="flex whitespace-nowrap">
         <div ref={contentRef} className="flex items-center">
           {marqueeItems.map((item, i) => (

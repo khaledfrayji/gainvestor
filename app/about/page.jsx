@@ -189,7 +189,7 @@ export default function About() {
   ];
 
   return (
-    <div ref={sectionRef} className="overflow-hidden  bg-white">
+    <div ref={sectionRef} className="overflow-hidden  bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#0A2342] via-[#0d2d54] to-[#0A2342]">
         {/* Background Image with proper overlay */}
@@ -352,7 +352,7 @@ export default function About() {
               return (
                 <div
                   key={index}
-                  className="value-card group relative overflow-hidden rounded-3xl border border-gray-200 bg-white p-10 shadow-sm transition-all duration-300 hover:border-[#C6A664]/30 hover:shadow-xl"
+                  className="value-card group relative overflow-hidden rounded-3xl border border-gray-200 bg-gradient-to-b from-white to-gray-50 p-10 shadow-sm transition-all duration-300 hover:border-[#C6A664]/30 hover:shadow-xl"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#C6A664]/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   
@@ -377,7 +377,7 @@ export default function About() {
       </section>
 
       {/* Our Approach Section */}
-      <section ref={approachRef} className="bg-gray-50 px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+      <section ref={approachRef} className="bg-gradient-to-t from-white to-gray-50 px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
         <div className="mx-auto max-w-4xl">
           <div className="mb-16 text-center">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#C6A664]/10 px-4 py-2 text-sm font-semibold text-[#C6A664]">
@@ -421,7 +421,7 @@ export default function About() {
       </section>
 
       {/* Final CTA Section */}
-      <section ref={finalRef} className="px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+      <section ref={finalRef} className="px-4 py-24 bg-gradient-to-b from-white to-[#D4B876] sm:px-6 lg:px-8 lg:py-32">
         <div className="mx-auto max-w-4xl text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-[#C6A664]/10 px-4 py-2 text-sm font-semibold text-[#C6A664]">
             <FiTrendingUp className="h-4 w-4" />
@@ -446,7 +446,7 @@ export default function About() {
             <span>Schedule a Consultation</span>
           </a>
 
-          <p className="mt-8 text-sm text-gray-500">
+          <p className="mt-8 text-sm text-gray-100">
             Free consultation • No obligations • Completely confidential
           </p>
         </div>

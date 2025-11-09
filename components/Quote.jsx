@@ -37,7 +37,7 @@ export default function Quote() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-gradient-to-t from-white to-gray-50 px-4 py-10 sm:px-6 lg:px-8 lg:py-32"
+      className="relative overflow-hidden bg-white px-4 py-10 sm:px-6 lg:px-8 lg:py-32"
     >
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden">

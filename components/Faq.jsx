@@ -136,13 +136,10 @@ export default function FAQ() {
   return (
     <>
     
-     <section className="relative overflow-hidden bg-gradient-to-b from-white to-gray-50 px-4 py-20 sm:px-6 lg:px-8 lg:pt-32">
+     <section className="relative overflow-hidden bg-white px-4 py-20 sm:px-6 lg:px-8 lg:pt-32">
       {/* Decorative background elements */}
       
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -left-40 top-40 h-96 w-96 rounded-full bg-[#C6A664]/5 blur-3xl" />
-        <div className="absolute -right-40 bottom-40 h-96 w-96 rounded-full bg-blue-500/5 blur-3xl" />
-      </div>
+     
 
       <div className="relative z-10 mx-auto max-w-4xl">
         {/* Section heading */}
