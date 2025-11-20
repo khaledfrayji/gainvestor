@@ -100,7 +100,7 @@ function FooterLink({ href, children }) {
   return (
     <Link
       href={href}
-      className="inline-block py-1 text-base hover:text-gray-900"
+      className="inline-block py-1 text-base hover:text-gray-300"
     >
       {children}
     </Link>

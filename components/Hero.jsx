@@ -183,7 +183,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-linear-to-r from-[#D4B876] to-[#C6A664] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </a>
           <a
-            href="/about"
+            href="/learnhowitworks"
             className="group relative overflow-hidden rounded-xl border-2 border-white/20 bg-white/5 px-8 py-4 text-base font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-white/40 hover:bg-white/10 sm:px-10"
           >
             <span className="relative z-10">Learn How It Works</span>
