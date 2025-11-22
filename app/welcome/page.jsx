@@ -98,16 +98,11 @@ export default function WelcomePage() {
   }, []);
 
   return (
-    <div ref={heroRef} className="min-h-screen bg-[#0A2342]">
-      {/* Parallax Background */}
-      <div className="pointer-events-none fixed inset-0 overflow-hidden">
-        <div className="parallax-orb absolute -left-40 top-20 h-96 w-96 rounded-full bg-[#C6A664]/10 blur-3xl" />
-        <div className="parallax-orb absolute -right-40 top-1/3 h-[32rem] w-[32rem] rounded-full bg-[#C6A664]/5 blur-3xl" />
-        <div className="parallax-orb absolute left-1/2 bottom-20 h-96 w-96 -translate-x-1/2 rounded-full bg-[#C6A664]/10 blur-3xl" />
-      </div>
+    <div ref={heroRef} className=" bg-[#0A2342]">
+    
 
       {/* HERO SECTION */}
-      <section className="relative px-4 pt-32 pb-40 sm:px-6 lg:px-8 lg:pt-48">
+      <section className="relative px-4 pt-28  pb-40 sm:px-6 lg:px-8 ">
         <div className="relative z-10 mx-auto max-w-7xl text-center">
           {/* Badge */}
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#C6A664]/20 bg-[#C6A664]/10 px-5 py-2.5 text-sm font-semibold text-[#C6A664] backdrop-blur-sm">
@@ -160,9 +155,6 @@ export default function WelcomePage() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-7-7l7 7-7 7" />
             </svg>
 
-            {/* Shine Overlay */}
-            <div className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 
-                            bg-gradient-to-r from-white/20 via-transparent to-white/20" />
           </a>
         </div>
       </section>

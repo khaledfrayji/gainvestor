@@ -16,18 +16,17 @@ import {
   FiInstagram,
   FiFacebook,
 } from 'react-icons/fi';
-
+import { FaTiktok } from "react-icons/fa6";
 const referralOptions = [
   { value: 'google_search', label: 'Google Search', icon: FiSearch },
-  { value: 'social_media', label: 'Social Media', icon: FiShare2 },
   { value: 'facebook', label: 'Facebook', icon: FiFacebook },
   { value: 'instagram', label: 'Instagram', icon: FiInstagram },
+  { value: 'tiktok', label: 'TikTok', icon: FaTiktok  },
   { value: 'youtube', label: 'YouTube', icon: FiYoutube },
   { value: 'linkedin', label: 'LinkedIn', icon: FiBriefcase },
   { value: 'friends', label: 'Friends & Family', icon: FiUsers },
   { value: 'property_events', label: 'Property Events', icon: FiCalendar },
   { value: 'financial_advisor', label: 'Financial Advisor', icon: FiTrendingUp },
-  { value: 'podcast', label: 'Podcast / Radio', icon: FiMessageSquare },
   { value: 'other', label: 'Other', icon: FiGlobe },
 ];
 

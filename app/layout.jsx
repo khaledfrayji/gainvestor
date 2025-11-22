@@ -1,5 +1,5 @@
 // app/layout.jsx
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Playfair_Display ,Merriweather} from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
@@ -12,7 +12,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const merriweather = Merriweather({
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap",
@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} font-sans antialiased bg-[#0A2342] text-white`}
+        className={`${merriweather.variable} font-sans antialiased bg-[#0A2342] text-white`}
       >
         <Navbar/>
         {children}

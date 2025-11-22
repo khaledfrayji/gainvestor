@@ -724,10 +724,10 @@ export default function LearnHowItWorks() {
             </div>
 
             <a
-              href="https://calendly.com/ozgainvestor/welcome-call"
+              href="https://form.typeform.com/to/H7g8lHmO"
               className="cta-button group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-[#C6A664] to-[#D4B876] px-10 py-5 text-lg font-semibold text-[#0A2342] shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl"
             >
-              <span className="relative z-10">Schedule Your Free Consultation</span>
+              <span className="relative z-10">Contact Us</span>
               <FiArrowRight className="relative z-10 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#D4B876] to-[#C6A664] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </a>

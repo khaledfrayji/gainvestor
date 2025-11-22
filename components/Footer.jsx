@@ -33,16 +33,16 @@ export default function Footer() {
           <div className="flex w-full flex-col items-start gap-4 sm:w-auto sm:flex-row sm:items-center sm:gap-6">
             {/* Social Icons */}
             <div className="flex items-center gap-3">
-              <Social href="https://www.facebook.com/nabil.farha.272489/" className="" label="Facebook" Icon={FiFacebook} />
+              <Social href="https://www.facebook.com/share/16eEqQDZs1/?mibextid=wwXIfr" className="" label="Facebook" Icon={FiFacebook} />
               <Social href="https://www.instagram.com/gainvestor1/" label="Instagram" Icon={FiInstagram} />
-              <Social href="https://www.linkedin.com/in/nabil-farha-gainvestor/" label="LinkedIn" Icon={FiLinkedin} />
-              <Social href="https://www.tiktok.com/@gainvestor" label="TikTok" Icon={FaTiktok} />
-              <Social href="https://wa.me/61433199937" label="WhatsApp" Icon={FaWhatsapp} />
+              <Social href="https://www.linkedin.com/company/gainvestor/" label="LinkedIn" Icon={FiLinkedin} />
+              <Social href="https://www.tiktok.com/@investor.property.group?_r=1&_t=ZS-91ZHF2ipvOh" label="TikTok" Icon={FaTiktok} />
+              <Social href="https://wa.me/+61426000770" label="WhatsApp" Icon={FaWhatsapp} />
             </div>
 
             {/* Phone */}
             <div className="text-base font-semibold text-gray-200">
-              Call Us: <span className="font-bold">0433 199 937</span>
+              Call Us: <span className="font-bold">+61 426 000 770</span>
             </div>
           </div>
         </div>
