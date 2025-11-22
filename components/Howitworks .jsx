@@ -227,10 +227,10 @@ export default function HowItWorksSimple() {
             <div className="inline-flex flex-col items-center gap-4 ">
               <p className="text-lg text-white/70">Ready to get started?</p>
               <a
-                href="https://calendly.com/ozgainvestor/welcome-call"
+                href="https://form.typeform.com/to/H7g8lHmO"
                 className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-[#C6A664] to-[#D4B876] px-8 py-4 text-base font-semibold text-[#0A2342] shadow-lg shadow-[#C6A664]/20  hover:shadow-xl hover:shadow-[#C6A664]/30"
               >
-                <span className="relative z-10">Schedule Your Consultation</span>
+                <span className="relative z-10">Get in Touch</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-[#D4B876] to-[#C6A664] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
               </a>
             </div>

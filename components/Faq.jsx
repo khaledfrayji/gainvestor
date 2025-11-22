@@ -265,10 +265,10 @@ export default function FAQ() {
               </p>
             </div>
             <a
-              href="https://calendly.com/ozgainvestor/welcome-call"
+              href="https://form.typeform.com/to/H7g8lHmO"
               className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-[#C6A664] to-[#D4B876] px-8 py-4 text-base font-semibold text-[#0A2342] shadow-lg  hover:shadow-xl"
             >
-              <span className="relative z-10">Schedule a Free Consultation</span>
+              <span className="relative z-10">Contact Us</span>
               <div className="absolute inset-0 bg-gradient-to-r from-[#D4B876] to-[#C6A664] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </a>
           </div>

@@ -20,7 +20,7 @@ export default function Footer() {
           {/* Logo */}
           <Link href="/" className="inline-flex items-center gap-3">
             <Image
-              src="/logo2.png" // replace with your Gainvestor logo
+              src="/l.png" // replace with your Gainvestor logo
               alt="Gainvestor"
               width={160}
               height={40}
