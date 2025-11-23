@@ -421,7 +421,7 @@ export default function About() {
       </section>
 
       {/* Final CTA Section */}
-      <section ref={finalRef} className="px-4 py-24 bg-gradient-to-b from-white to-[#D4B876] sm:px-6 lg:px-8 lg:py-32">
+      <section ref={finalRef} className="px-4 py-24 bg-gradient-to-b from-white to-gray-50 sm:px-6 lg:px-8 lg:py-32">
         <div className="mx-auto max-w-4xl text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-[#C6A664]/10 px-4 py-2 text-sm font-semibold text-[#C6A664]">
             <FiTrendingUp className="h-4 w-4" />

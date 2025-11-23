@@ -146,7 +146,7 @@ export default function CEOSection() {
               Nabil Farha
             </h3>
             <p className="mb-6 text-xl font-semibold text-[#C6A664]">
-              Founder & CEO, GainVestor
+              Founder & CEO, GainVestor Property Group
             </p>
 
             <div className="mb-8 space-y-4 text-lg leading-relaxed text-gray-700">

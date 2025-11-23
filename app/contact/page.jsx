@@ -164,11 +164,11 @@ export default function Contact() {
   ];
 
   const socialLinks = [
-    { name: 'Facebook', icon: FiFacebook, href: 'https://www.facebook.com/nabil.farha.272489/' },
+    { name: 'Facebook', icon: FiFacebook, href: 'https://www.facebook.com/share/16eEqQDZs1/?mibextid=wwXIfr' },
     { name: 'Instagram', icon: FiInstagram, href: 'https://www.instagram.com/gainvestor1/' },
-    { name: 'LinkedIn', icon: FiLinkedin, href: 'https://www.linkedin.com/in/nabil-farha-gainvestor/' },
-    { name: 'TikTok', icon: FaTiktok, href: 'https://www.tiktok.com/@gainvestor' },
-    { name: 'WhatsApp', icon: FaWhatsapp, href: 'https://wa.me/61433199937' },
+    { name: 'LinkedIn', icon: FiLinkedin, href: 'https://www.linkedin.com/company/gainvestor/' },
+    { name: 'TikTok', icon: FaTiktok, href: 'https://www.tiktok.com/@investor.property.group?_r=1&_t=ZS-91ZHF2ipvOh' },
+    { name: 'WhatsApp', icon: FaWhatsapp, href: 'https://wa.me/+61426000770' },
   ];
 
   return (

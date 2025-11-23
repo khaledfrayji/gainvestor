@@ -110,8 +110,8 @@ export default function Testimonials() {
               say
             </span>
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-white/70 sm:text-xl">
-            Here's what some of our clients have to say about Gainvestor.
+          <p className="mx-auto max-w-2xl text-lg text-white/70 sm:text-md">
+            Here's what some of our clients have to say about Gainvestor Property Group.
           </p>
         </div>
 

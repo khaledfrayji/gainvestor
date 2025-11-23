@@ -168,7 +168,7 @@ export default function Hero() {
           className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg md:mt-8 md:text-xl"
         >
           At{' '}
-          <span className="font-semibold text-white">Gainvestor</span>, we help you
+          <span className="font-semibold text-white">Gainvestor Property Group</span>, we help you
           discover premium opportunities, build a diversified portfolio, and achieve
           financial freedom with guidance from trusted industry experts.
         </p>
