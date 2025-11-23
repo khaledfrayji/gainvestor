@@ -150,7 +150,7 @@ export default function Hero() {
         >
           <SplitText>Ready to</SplitText>
           <span className="relative mx-2 inline-block">
-            <span className="word relative z-10 bg-gradient-to-r from-[#C6A664] via-[#D4B876] to-[#C6A664] bg-clip-text font-bold italic text-transparent">
+            <span className="word relative z-10 bg-gradient-to-r from-[#C6A664] via-[#D4B876] to-[#C6A664] bg-clip-text font-bold text-transparent">
               grow
             </span>
             <span className="absolute -bottom-1 left-0 h-3 w-full bg-[#C6A664]/20 blur-sm" />
