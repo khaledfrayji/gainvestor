@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Script from 'next/script';
 import {
   FiMail,
   FiPhone,
@@ -133,6 +134,24 @@ export default function Contact() {
     return () => ctx.revert();
   }, []);
 
+  // Track TikTok events
+  const trackTikTokEvent = (eventName) => {
+    if (typeof window !== 'undefined' && window.ttq) {
+      window.ttq.track(eventName);
+    }
+  };
+
+  // Track CTA button click
+  const handleCTAClick = () => {
+    trackTikTokEvent('ClickButton');
+    // The link will open normally
+  };
+
+  // Track phone clicks
+  const handlePhoneClick = () => {
+    trackTikTokEvent('Contact');
+  };
+
   const contactInfo = [
     {
       icon: FiMail,
@@ -173,6 +192,18 @@ export default function Contact() {
 
   return (
     <>
+      {/* TikTok Pixel */}
+      <Script id="tiktok-pixel" strategy="afterInteractive">
+        {`
+          !function (w, d, t) {
+            w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=i+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+            
+            ttq.load('D4H93TJC77UEBGICSNA0');
+            ttq.page();
+          }(window, document, 'ttq');
+        `}
+      </Script>
+
       <style jsx>{`
         @media (prefers-reduced-motion: reduce) {
           * {
@@ -281,8 +312,24 @@ export default function Contact() {
                     <h4 className="mb-2 font-semibold text-[#0A2342]">Contact</h4>
                     <div className="space-y-2 text-gray-600">
                       <p>Email: info@gainvestor.com</p>
-                      <p>Phone: 0426 000 770</p>
-                      <p>Phone: 0433 199 937</p>
+                      <p>
+                        Phone: <a 
+                          href="tel:+61426000770" 
+                          onClick={handlePhoneClick}
+                          className="hover:text-[#C6A664] transition-colors"
+                        >
+                          0426 000 770
+                        </a>
+                      </p>
+                      <p>
+                        Phone: <a 
+                          href="tel:+61433199937"
+                          onClick={handlePhoneClick}
+                          className="hover:text-[#C6A664] transition-colors"
+                        >
+                          0433 199 937
+                        </a>
+                      </p>
                     </div>
                   </div>
 
@@ -316,19 +363,56 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Map */}
-              <div className="overflow-hidden rounded-3xl border border-gray-200 shadow-sm">
-                <div className="aspect-square bg-gray-200 lg:h-full">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29640665.877589837!2d93.64804770275957!3d-24.923710520104134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60ef8eebf772de55%3A0x698914bc91a2b5e3!2sGainVestor!5e0!3m2!1sen!2sus!4v1762475413422!5m2!1sen!2sus"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Gainvestor Office Location"
-                  />
+              {/* Map with CTA */}
+              <div className="flex flex-col gap-6">
+                {/* CTA Card */}
+                <div className="rounded-3xl border border-gray-200 bg-gradient-to-br from-[#0A2342] to-[#0d2d54] p-8 shadow-sm">
+                  <h3 className="mb-3 text-2xl font-bold text-white">
+                    Ready to Get Started?
+                  </h3>
+                  <p className="mb-6 text-white/80">
+                    Take the first step towards your investment success. Fill out our quick form and we'll get back to you within 24 hours.
+                  </p>
+                  <a
+                    href="https://form.typeform.com/to/H7g8lHmO"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleCTAClick}
+                    className="inline-flex items-center gap-2 rounded-xl bg-[#C6A664] px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:bg-[#D4B876] hover:shadow-xl hover:scale-105"
+                    onMouseEnter={(e) => {
+                      gsap.to(e.currentTarget, {
+                        y: -4,
+                        duration: 0.3,
+                        ease: 'power2.out',
+                      });
+                    }}
+                    onMouseLeave={(e) => {
+                      gsap.to(e.currentTarget, {
+                        y: 0,
+                        duration: 0.3,
+                        ease: 'power2.out',
+                      });
+                    }}
+                  >
+                    <FiMessageSquare className="h-5 w-5" />
+                    <span>Contact Us Now</span>
+                  </a>
+                </div>
+
+                {/* Map */}
+                <div className="overflow-hidden rounded-3xl border border-gray-200 shadow-sm">
+                  <div className="aspect-square bg-gray-200 lg:h-full lg:min-h-[400px]">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29640665.877589837!2d93.64804770275957!3d-24.923710520104134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60ef8eebf772de55%3A0x698914bc91a2b5e3!2sGainVestor!5e0!3m2!1sen!2sus!4v1762475413422!5m2!1sen!2sus"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="Gainvestor Office Location"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
