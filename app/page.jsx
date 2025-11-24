@@ -6,8 +6,8 @@ import Testimonials from "../components/Testimonials";
 import Faq from "../components/Faq";
 import Marquee from "../components/Marquee";
 import Ceosection from "../components/Ceosection";
-import ReferralModal from "../components/ReferralModal";
 import GainvestorReferralModal from "../components/ReferralModal";
+
 export default function Page() {
   return (
     <>
