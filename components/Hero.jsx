@@ -179,15 +179,10 @@ export default function Hero() {
             href="https://form.typeform.com/to/H7g8lHmO"
             className="group relative overflow-hidden rounded-xl bg-linear-to-r from-[#C6A664] to-[#D4B876] px-8 py-4 text-base font-semibold text-[#0A2342] shadow-lg shadow-[#C6A664]/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#C6A664]/30 sm:px-10"
           >
-            <span className="relative z-10">Contact Us</span>
+            <span className="relative text-2xl p-10 z-10">Contact Us</span>
             <div className="absolute inset-0 bg-linear-to-r from-[#D4B876] to-[#C6A664] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </a>
-          <a
-            href="/learnhowitworks"
-            className="group relative overflow-hidden rounded-xl border-2 border-white/20 bg-white/5 px-8 py-4 text-base font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-white/40 hover:bg-white/10 sm:px-10"
-          >
-            <span className="relative z-10">Learn How It Works</span>
-          </a>
+         
         </div>
 
      
