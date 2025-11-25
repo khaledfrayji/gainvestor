@@ -15,7 +15,8 @@ import { FaTiktok, FaWhatsapp } from 'react-icons/fa';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
-import Script from 'next/script';
+import Footer from '../../components/Footer';
+import Navbar from '../../components/Navbar';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,7 +29,6 @@ export default function Contact() {
   const contactCardsRef = useRef([]);
   const infoContainerRef = useRef(null);
   const ctaSectionRef = useRef(null);
-  const typeformRef = useRef(null);
 
   useEffect(() => {
     // Hero section animations
@@ -115,21 +115,6 @@ export default function Contact() {
         });
       }
 
-      // Typeform section animation
-      if (typeformRef.current) {
-        gsap.from(typeformRef.current, {
-          scrollTrigger: {
-            trigger: typeformRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
-          opacity: 0,
-          y: 40,
-          duration: 0.8,
-          ease: 'power3.out',
-        });
-      }
-
       // CTA section animation
       if (ctaSectionRef.current) {
         gsap.from(ctaSectionRef.current.children, {
@@ -190,6 +175,7 @@ export default function Contact() {
 
   return (
     <>
+    <Navbar/>
       <style jsx>{`
         @media (prefers-reduced-motion: reduce) {
           * {
@@ -200,30 +186,27 @@ export default function Contact() {
         }
       `}</style>
 
-      {/* Load Typeform embed script */}
-      <Script src="//embed.typeform.com/next/embed.js" strategy="lazyOnload" />
-
       <div className="scroll-smooth overflow-hidden bg-white">
         {/* Hero Section */}
         <section 
           ref={heroRef}
           className="relative overflow-hidden bg-gradient-to-br from-[#0A2342] via-[#0d2d54] to-[#0A2342] px-4 py-24 sm:px-6 lg:px-8 lg:py-32"
         >
-          {/* Background Image with proper overlay */}
-          <div className="absolute inset-0">
-            <Image
-              src="/hero.png"
-              alt="City skyline at sunset"
-              fill
-              className="object-cover opacity-30"
-              priority
-              quality={90}
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0A2342]/50 via-[#0A2342]/70 to-[#0A2342]" />
-          </div>
-
+           {/* Background Image with proper overlay */}
+        <div className="absolute inset-0">
+          <Image
+            src="/hero.png"
+            alt="City skyline at sunset"
+            fill
+            className="object-cover opacity-30"
+            priority
+            quality={90}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A2342]/50 via-[#0A2342]/70 to-[#0A2342]" />
+        </div>
           {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden">
+            {/* Large animated orbs */}
             <div 
               ref={orb1Ref}
               className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-[#C6A664]/10 blur-3xl"
@@ -259,37 +242,10 @@ export default function Contact() {
           </div>
         </section>
 
-        {/* Typeform Section */}
-        <section 
-          ref={typeformRef}
-          className="relative overflow-hidden bg-white px-4 py-16 sm:px-6 lg:px-8 lg:py-24"
-        >
-          <div className="mx-auto max-w-5xl">
-            <div className="mb-12 text-center">
-              <h2 className="mb-4 text-3xl font-bold text-[#0A2342] sm:text-4xl">
-                Start Your Investment Journey
-              </h2>
-              <p className="text-lg text-gray-600">
-                Fill out the form below and we'll get back to you shortly
-              </p>
-            </div>
-
-            {/* Typeform Embed Container */}
-            <div className="overflow-hidden rounded-3xl border border-gray-200 bg-gray-50 shadow-lg">
-              <div 
-                data-tf-live="01KAT2ACFKGSQXC31M18MHT5CR"
-                style={{ 
-                  width: '100%', 
-                  height: '600px',
-                  minHeight: '500px'
-                }}
-              />
-            </div>
-          </div>
-        </section>
-
+      
         {/* Office Info Section */}
         <section className="relative overflow-hidden bg-gray-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          
           {/* Subtle background animation */}
           <div className="absolute inset-0 opacity-30">
             <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-[#C6A664]/5 blur-3xl" />
@@ -381,7 +337,10 @@ export default function Contact() {
             </div>
           </div>
         </section>
+
+      
       </div>
+      <Footer/>
     </>
   );
 }

@@ -165,7 +165,7 @@ export default function Navbar() {
             {/* DESKTOP CTA */}
             <div ref={ctaRef} className="hidden lg:flex items-center gap-4">
               <Link
-                href="https://form.typeform.com/to/H7g8lHmO"
+                href="/getstarted"
                 className="group relative px-6 xl:px-8 py-3 xl:py-3.5 bg-gradient-to-r from-[#C6A664] to-[#D4B876] text-[#0A2342] text-sm xl:text-base font-bold rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#C6A664]/40 hover:scale-105"
               >
                 <span className="relative z-10 flex items-center gap-2">
@@ -315,7 +315,7 @@ function MobileMenu({ isOpen, onClose, navLinks, isActive }) {
 
             {/* CTA */}
             <Link
-              href="https://form.typeform.com/to/H7g8lHmO"
+              href="/getstarted"
               onClick={onClose}
               className="group flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#C6A664] to-[#D4B876] px-6 py-4 text-base font-bold text-[#0A2342] hover:shadow-xl transition-all"
             >

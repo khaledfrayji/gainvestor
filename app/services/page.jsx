@@ -16,6 +16,8 @@ import {
   FiAward,
   FiTarget
 } from 'react-icons/fi';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
@@ -441,6 +443,8 @@ export default function Services() {
   ];
 
   return (
+   <>
+   <Navbar/>
     <div ref={heroRef} className="scroll-smooth overflow-hidden bg-white">
       <style jsx>{`
         @media (prefers-reduced-motion: reduce) {
@@ -654,5 +658,7 @@ export default function Services() {
 
     
     </div>
+    <Footer/>
+   </>
   );
 }

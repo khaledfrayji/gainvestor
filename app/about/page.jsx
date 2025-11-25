@@ -13,6 +13,8 @@ import {
   FiTrendingUp,
   FiCompass
 } from 'react-icons/fi';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -189,7 +191,9 @@ export default function About() {
   ];
 
   return (
-    <div ref={sectionRef} className="overflow-hidden   bg-gradient-to-b from-white to-gray-50">
+    <>
+    <Navbar/>
+     <div ref={sectionRef} className="overflow-hidden   bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
       <section ref={heroRef} className="relative pt-8 min-h-screen overflow-hidden bg-gradient-to-br from-[#0A2342] via-[#0d2d54] to-[#0A2342]">
         {/* Background Image with proper overlay */}
@@ -452,5 +456,8 @@ export default function About() {
         </div>
       </section>
     </div>
+    <Footer/>
+    </>
+  
   );
 }

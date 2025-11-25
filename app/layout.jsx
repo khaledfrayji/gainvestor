@@ -31,10 +31,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${merriweather.variable} font-sans antialiased bg-[#0A2342] text-white`}
       >
-        <Navbar/>
+        
         {children}
         <BookingButton/>
-        <Footer/>
+   
       </body>
     </html>
   );
