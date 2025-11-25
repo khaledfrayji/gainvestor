@@ -265,7 +265,7 @@ export default function FAQ() {
               </p>
             </div>
             <a
-              href="https://form.typeform.com/to/H7g8lHmO"
+              href="/getstarted"
               className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-[#C6A664] to-[#D4B876] px-8 py-4 text-base font-semibold text-[#0A2342] shadow-lg  hover:shadow-xl"
             >
               <span className="relative z-10">Contact Us</span>

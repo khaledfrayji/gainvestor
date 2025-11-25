@@ -485,7 +485,7 @@ export default function Services() {
             <span>Our Services</span>
           </div>
 
-          <h1 className="hero-title mb-8 text-5xl font-bold leading-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="hero-title mb-8 text-4xl font-bold leading-tight text-white sm:text-6xl lg:text-7xl">
             Comprehensive{' '}
             <span className="bg-gradient-to-r from-[#C6A664] to-[#D4B876] bg-clip-text text-transparent">
               buyer's agent
