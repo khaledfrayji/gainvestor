@@ -42,7 +42,7 @@ export default function Footer() {
 
             {/* Phone */}
             <div className="text-base font-semibold text-gray-200">
-              Call Us: <span className="font-bold">+61 426 000 770</span>
+              Call Us: <span className="font-bold">426 000 770</span>
             </div>
           </div>
         </div>

@@ -1,8 +1,6 @@
 // app/layout.jsx
-import { Inter, Playfair_Display ,Merriweather} from "next/font/google";
+import { Inter,Merriweather} from "next/font/google";
 import "./globals.css";
-import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
 import BookingButton from "../components/Bookingbutton"
 
 // Import fonts from Google

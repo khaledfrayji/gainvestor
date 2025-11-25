@@ -132,7 +132,7 @@ export default function WelcomePage() {
           {/* GOLD CONTACT BUTTON */}
           <a
             ref={ctaRef}
-            href="https://form.typeform.com/to/H7g8lHmO"
+            href="/getstarted"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative mx-auto mt-12 inline-flex items-center justify-center gap-2 overflow-hidden 

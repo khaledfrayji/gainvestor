@@ -283,7 +283,7 @@ export default function Contact() {
                   <div>
                     <h4 className="mb-2 font-semibold text-[#0A2342]">Contact</h4>
                     <div className="space-y-2 text-gray-600">
-                      <p>Email: info@gainvestor.com</p>
+                      <p>Email: sales@gainvestor.com</p>
                       <p>Phone: 0426 000 770</p>
                       <p>Phone: 0433 199 937</p>
                     </div>
