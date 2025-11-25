@@ -21,6 +21,13 @@ export const metadata = {
   title: "Gainvestor — Smart Property Investments",
   description:
     "Gainvestor helps you build wealth through premium real estate investments with expert guidance and trusted strategies.",
+     other: {
+    "theme-color": "#0d1117",
+    "color-scheme": "dark only",
+    "og:url": "https://gainvestor.com.au/", //main url
+    "og:image": "/opengraph-image.jpg", //when u share the link on apps the img would be displayed
+    "og:type": "website",
+  },
 };
 
 export default function RootLayout({ children }) {
