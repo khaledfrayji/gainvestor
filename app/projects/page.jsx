@@ -12,6 +12,8 @@ import {
   FiAward,
   FiFilter
 } from 'react-icons/fi';
+import Footer from '../../components/Footer';
+import Navbar from '../../components/Navbar';
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -110,6 +112,7 @@ export default function Projects() {
 
   return (
     <>
+    <Navbar/>
       <style jsx>{`
         @keyframes fadeInUp {
           from {
