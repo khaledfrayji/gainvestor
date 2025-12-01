@@ -640,8 +640,16 @@ export default function Welcome() {
           </p>
 
           <a
-            href="https://calendly.com/ozgainvestor/welcome-call"
-            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#C6A664] to-[#D4B876] px-12 py-6 text-xl font-semibold text-[#0A2342] shadow-2xl transition-all duration-300 hover:scale-105"
+            ref={ctaRef}
+            href="https://form.typeform.com/to/H7g8lHmO"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative mx-auto mt-12 inline-flex items-center justify-center gap-2 overflow-hidden 
+                       rounded-xl bg-gradient-to-r from-[#D4B876] via-[#E6C980] to-[#C6A664] 
+                       px-12 py-5 text-lg font-bold text-[#0A2342]
+                       shadow-[0_0_25px_rgba(214,184,118,0.45)]
+                       transition-all duration-300 hover:scale-105 
+                       hover:shadow-[0_0_45px_rgba(214,184,118,0.7)]"
           >
             <span>Get Started — Free Consultation</span>
           </a>

@@ -42,7 +42,7 @@ export default function Footer() {
 
             {/* Phone */}
             <div className="text-base font-semibold text-gray-200">
-              Call Us: <span className="font-bold">+61 426 000 770</span>
+              Call Us: <span className="font-bold">426 000 770</span>
             </div>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function Footer() {
             <FooterLink href="/">Home</FooterLink>
             <FooterLink href="/about">About Us</FooterLink>
             <FooterLink href="/services">Services</FooterLink>
-            <FooterLink href="/portfolio">Portfolio</FooterLink>
+            <FooterLink href="/portfolio">Projects</FooterLink>
           </div>
         </div>
 
@@ -75,6 +75,12 @@ export default function Footer() {
         <div className="relative border-t border-gray-500 py-5 text-center">
           <p className="text-xs text-gray-300 sm:text-sm">
             © {new Date().getFullYear()} Gainvestor. All rights reserved.
+          </p>
+        </div>
+          {/* Bottom */}
+        <div className="relative pb-2 text-center">
+          <p className="text-xs text-gray-400 sm:text-sm">
+          Powered By <Link href={"https://techtalkslb.com"} className=''>TechTalks</Link>
           </p>
         </div>
       </div>

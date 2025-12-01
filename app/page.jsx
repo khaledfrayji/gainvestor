@@ -7,10 +7,13 @@ import Faq from "../components/Faq";
 import Marquee from "../components/Marquee";
 import Ceosection from "../components/Ceosection";
 import GainvestorReferralModal from "../components/ReferralModal";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function Page() {
   return (
     <>
+    <Navbar/>
     <GainvestorReferralModal/>
       <Hero />
       <Marquee/>
@@ -19,6 +22,7 @@ export default function Page() {
      <Ceosection/>
      <Faq/>
       <Quote/>
+      <Footer/>
     </>
   );
 }
